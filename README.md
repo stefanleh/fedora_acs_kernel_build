@@ -13,7 +13,7 @@ Docker Image for building custom ACS & Agesa patched Fedora kernels
 
     docker build -t stefanlehmann/acs_fedora -f Dockerfile .
 
-# Run the build
+# Run the kernel build
 
     docker run -it -v /mnt/faststorage/kernel:/rpms stefanlehmann/acs_fedora 5.7.17-200.fc32
 
