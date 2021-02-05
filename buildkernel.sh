@@ -11,7 +11,7 @@ if [[ $1 == *".fc3"* ]]; then
 	cd /root/rpmbuild/SOURCES/
 	cp /root/acso.patch .
 	cp /root/agesa.patch .
-	sed -i -e 's/^CONFIG_USB_XHCI_HCD=y/CONFIG_USB_XHCI_HCD=m/g' kernel-x86_64-fedora.config
+	#sed -i -e 's/^CONFIG_USB_XHCI_HCD=y/CONFIG_USB_XHCI_HCD=m/g' kernel-x86_64-fedora.config
 	cd /root/rpmbuild/SPECS/
 	dnf builddep kernel.spec -y
 	sed -i 's/# END OF PATCH DEFINITIONS/Patch9001: agesa.patch\n# END OF PATCH DEFINITIONS/g' kernel.spec
