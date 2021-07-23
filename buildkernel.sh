@@ -1,7 +1,7 @@
 #!/bin/bash
 
-if [[ $1 == *".fc3"* ]]; then
-
+if [[ $1 == *".fc3"* ]] 
+then
 	cd /root
 	VERSION=$1
 	koji download-build --arch=src kernel-$VERSION
@@ -22,7 +22,6 @@ if [[ $1 == *".fc3"* ]]; then
 	cd /root/rpmbuild/RPMS/x86_64/
 	ls -al
 	mv kernel* /rpms/
-
-  else exec "$@"
-
+else 
+	exec "$@"
 fi
