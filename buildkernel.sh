@@ -23,6 +23,6 @@ if [[ $1 == *".fc3"* ]]; then
 	ls -al
 	mv kernel* /rpms/
 
-fi
+  else exec "$@"
 
-exec "$@"
+fi
