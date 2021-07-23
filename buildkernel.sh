@@ -24,3 +24,5 @@ if [[ $1 == *".fc3"* ]]; then
 	mv kernel* /rpms/
 
 fi
+
+exec "$@"
