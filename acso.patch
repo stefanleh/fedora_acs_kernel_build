@@ -17,7 +17,7 @@ index 7bc83f3d9bdf..3174f3bd126a 100644
 +					[PCIE] Override missing PCIe ACS support for:
 +				downstream
 +					All downstream ports - full ACS capabilities
-+				multfunction
++				multifunction
 +					All multifunction devices - multifunction ACS subset
 +				id:nnnn:nnnn
 +					Specfic device - full ACS capabilities
@@ -29,7 +29,7 @@ diff --git a/drivers/pci/quirks.c b/drivers/pci/quirks.c
 index ca9ed5774eb1..dae6f719cf84 100644
 --- a/drivers/pci/quirks.c
 +++ b/drivers/pci/quirks.c
-@@ -3544,6 +3544,106 @@ static void quirk_no_bus_reset(struct pci_dev *dev)
+@@ -3544,6 +3544,107 @@ static void quirk_no_bus_reset(struct pci_dev *dev)
  	dev->dev_flags |= PCI_DEV_FLAGS_NO_BUS_RESET;
  }
  
@@ -133,9 +133,10 @@ index ca9ed5774eb1..dae6f719cf84 100644
 +
 +	return -ENOTTY;
 +}
++
  /*
-  * Some Atheros AR9xxx and QCA988x chips do not behave after a bus reset.
-  * The device will throw a Link Down error on AER-capable systems and
+  * Some NVIDIA GPU devices do not work with bus reset, SBR needs to be
+  * prevented for those affected devices.
 @@ -4796,6 +4896,7 @@ static const struct pci_dev_acs_enabled {
  	{ PCI_VENDOR_ID_ZHAOXIN, 0x9083, pci_quirk_mf_endpoint_acs },
  	/* Zhaoxin Root/Downstream Ports */
