@@ -1,4 +1,4 @@
-FROM fedora:33
+FROM fedora:34
 RUN dnf upgrade -y
 RUN dnf install koji rpmdevtools dnf-plugins-core -y
 WORKDIR /root
