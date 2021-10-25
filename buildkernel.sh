@@ -14,8 +14,7 @@ then
 	cd /root/rpmbuild/SPECS/
 	dnf builddep kernel.spec -y
 	sed -i 's/# define buildid .local/%define buildid .acsagesa/g' kernel.spec
-	rpmbuild -bb --without debug --target=x86_64 kernel.spec
-	rm /root/rpmbuild/RPMS/x86_64/kernel-debuginfo* -rf
+	rpmbuild -bb --without debug --without debuginfo --target=x86_64 kernel.spec
 	cd /root/rpmbuild/RPMS/x86_64/
 	ls -al
 	mv kernel* /rpms/
